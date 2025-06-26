@@ -4,7 +4,7 @@ def factorial(n):
 	else:
 		return n * factorial(n - 1)
 
-number = 8
+number = 10
 result = factorial(number)
 print(f"The factorial of {number} are {result}.")
 		
