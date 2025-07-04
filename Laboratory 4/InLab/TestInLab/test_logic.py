@@ -1,6 +1,6 @@
 # test_game_logic.py
 import unittest
-from oxo_logic import newGame, userMove, computerMove, _isWinningMove
+from InLab.oxo_logic import newGame, userMove, computerMove, _isWinningMove
 import oxo_data
 
 class TestGameLogic(unittest.TestCase):
