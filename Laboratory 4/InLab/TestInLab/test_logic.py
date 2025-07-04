@@ -1,7 +1,7 @@
 # test_game_logic.py
 import unittest
 from InLab.oxo_logic import newGame, userMove, computerMove, _isWinningMove
-import oxo_data
+import InLab.oxo_data
 
 class TestGameLogic(unittest.TestCase):
     
@@ -32,8 +32,8 @@ class TestGameLogic(unittest.TestCase):
     
     def test_save_game(self):
         game = newGame()
-        oxo_data.saveGame(game)  # This will save the game to a file
-        restored_game = oxo_data.restoreGame()  # This will restore the game from the file
+        InLab.oxo_data.saveGame(game)  # This will save the game to a file
+        restored_game = InLab.oxo_data.restoreGame()  # This will restore the game from the file
         self.assertEqual(game, restored_game)  # The saved and restored game should be identical
     
 if __name__ == '__main__':
