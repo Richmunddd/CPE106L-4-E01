@@ -54,27 +54,26 @@ def evHelp ():
 def evAbout():
       mb.showinfo("About","Tic-tac-toe game GUI demo by Alan Gauld")
 
-def evClick(row,col): 
-	if status['text'] == "Game over":
-		mb.showerror("Game over", "Game over!")
-		return
-		
-	game = cells2game()
-	index = (3*row) + col
-	result = oxo_logic.userMove(game, index)
-	game2cells(game)
-	
-	if not result:
-		result = oxo_logic.computerMove(game)
-		game2cells(game)
-	if result == "D":
-		mb.showinfo("Result", "It's a Draw!")
-		status['text'] = "Game over"
-	else:
-		if result =="X" or result == "O":
-		    mb.showinfo("Result",  "The winner is: {}".format(result))
-		    status['text'] = "Game over"
-		
+def evClick(row, col): 
+    if status['text'] == "Game over":
+        mb.showerror("Game over", "Game over!")
+        return
+
+    game = cells2game()
+    index = (3 * row) + col
+    result = oxo_logic.userMove(game, index)
+    game2cells(game)
+
+    if not result:
+        result = oxo_logic.computerMove(game)
+        game2cells(game)
+    if result == "D":
+        mb.showinfo("Result", "It's a Draw!")
+        status['text'] = "Game over"
+    elif result == "X" or result == "O":
+        mb.showinfo("Result", "The winner is: {}".format(result))
+        status['text'] = "Game over"
+
 def game2cells(game):
 	table = board.pack_slaves()[0]
 	for row in range(3):
@@ -83,12 +82,12 @@ def game2cells(game):
 
 	
 def cells2game():
-	values = []
-	table = board.pack_slaves()[0]
-	for row in range(3):
-	    for col in range(3):
-                values.append(table.grid_slaves(row=row, column=col)[0]['text'])
-	return values
+    values = []
+    table = board.pack_slaves()[0]
+    for row in range(3):
+        for col in range(3):
+            values.append(table.grid_slaves(row=row, column=col)[0]['text'])
+    return values
 	
 def buildBoard(parent):
 	outer = tk.Frame(parent, border=2, relief="sunken")
