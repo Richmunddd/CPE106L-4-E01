@@ -1,7 +1,7 @@
 # test_ui.py
 import unittest
 from unittest.mock import patch
-from oxo_ui import getMenuChoice, startGame, resumeGame, displayHelp, quit
+from InLab.oxo_ui import getMenuChoice, startGame, resumeGame, displayHelp, quit
 
 class TestUI(unittest.TestCase):
     

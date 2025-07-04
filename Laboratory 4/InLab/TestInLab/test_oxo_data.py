@@ -2,7 +2,7 @@
 import unittest
 from unittest.mock import patch
 import os
-import oxo_data
+import InLab.oxo_data
 
 class TestData(unittest.TestCase):
     

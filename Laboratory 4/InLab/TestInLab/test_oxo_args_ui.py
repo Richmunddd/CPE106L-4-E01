@@ -2,7 +2,7 @@
 import unittest
 from unittest.mock import patch
 import sys
-from oxo_args_ui import main
+from InLab.oxo_args_ui import main
 
 class TestArgsUI(unittest.TestCase):
     

@@ -1,7 +1,7 @@
 # test_commands.py
 import unittest
 from unittest.mock import patch
-from oxo_cmd import Oxo_cmd
+from InLab.oxo_cmd import Oxo_cmd
 
 class TestCommands(unittest.TestCase):
     
