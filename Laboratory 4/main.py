@@ -1,4 +1,4 @@
-from oxo-logic import TicTacToeGame
+from oxo_logic import TicTacToeGame
 from file_dialog import choose_file
 
 def main():
