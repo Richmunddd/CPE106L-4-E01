@@ -35,12 +35,13 @@ def resumeGame():
     return oxo_logic.restoreGame()
 
 def displayHelp():
-    print('''
-    Start new game:  starts a new game of tic-tac-toe
-    Resume saved game: restores the last saved game and commences play
-    Display help: shows this page
-    Quit: quits the application
-    ''')
+    print(''' 
+Start new game:  starts a new game of tic-tac-toe
+Resume saved game: restores the last saved game and commences play
+Display help: shows this page
+Quit: quits the application
+''')
+
 
 def quit():
     print("Goodbye...")

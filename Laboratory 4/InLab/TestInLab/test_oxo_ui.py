@@ -1,4 +1,3 @@
-# test_ui.py
 import unittest
 from unittest.mock import patch
 from InLab.oxo_ui import getMenuChoice, startGame, resumeGame, displayHelp, quit
@@ -14,7 +13,7 @@ class TestUI(unittest.TestCase):
         game = startGame()
         self.assertEqual(game, [' '] * 9)  # New game should return an empty board
     
-    @patch("oxo_ui.oxo_logic.restoreGame", return_value=[' '] * 9)  # Mock restoreGame to return a new game
+    @patch("InLab.oxo_ui.oxo_logic.restoreGame", return_value=[' '] * 9)  # Mock restoreGame to return a new game
     def test_resume_game(self, mock_restore):
         game = resumeGame()
         self.assertEqual(game, [' '] * 9)
@@ -22,7 +21,12 @@ class TestUI(unittest.TestCase):
     def test_display_help(self):
         with patch("builtins.print") as mock_print:
             displayHelp()
-            mock_print.assert_called_with('''\n    Start new game:  starts a new game of tic-tac-toe\n    Resume saved game: restores the last saved game and commences play\n    Display help: shows this page\n    Quit: quits the application\n''')
+            mock_print.assert_called_with(''' 
+Start new game:  starts a new game of tic-tac-toe
+Resume saved game: restores the last saved game and commences play
+Display help: shows this page
+Quit: quits the application
+''')
     
     @patch("builtins.input", side_effect=["q"])  # Simulate quitting the game
     def test_quit(self, mock_input):
