@@ -14,7 +14,7 @@ import oxo_data
 
 def newGame():
     ' return new empty game'
-    return list(" " * 9)
+    return [' '] * 9  # 9 empty cells
 
 def saveGame(game):
     ' save game to disk '

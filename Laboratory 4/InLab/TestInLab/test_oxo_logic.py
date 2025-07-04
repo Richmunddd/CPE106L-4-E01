@@ -1,7 +1,18 @@
-# test_game_logic.py
+# test_oxo_logic.py
 import unittest
 from InLab.oxo_logic import newGame, userMove, computerMove, _isWinningMove
 import InLab.oxo_data
+import os
+
+def cleanup_saved_game():
+    if os.path.exists("oxogame.dat"):
+        os.remove("oxogame.dat")
+
+def setUp(self):
+    cleanup_saved_game()
+
+def tearDown(self):
+    cleanup_saved_game()
 
 class TestGameLogic(unittest.TestCase):
     
