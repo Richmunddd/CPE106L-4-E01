@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.UserControl):  # Correctly inheriting from UserControl
+class EcoActionApp(ft.Control):  # Inheriting from Control instead of UserControl
     def __init__(self):
         super().__init__()
         self.points = 0
@@ -50,6 +50,7 @@ def main(page):
 
 # Run the app
 ft.app(target=main)
+
 
 
 
