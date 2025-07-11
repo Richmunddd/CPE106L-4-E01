@@ -1,9 +1,8 @@
 import flet as ft
 
-# Eco-Action Tracker Application using Flet
-
-class EcoActionApp(ft.Control):
+class EcoActionApp(ft.UserControl):  # Correctly inheriting from UserControl
     def __init__(self):
+        super().__init__()
         self.points = 0
 
     def build(self):
@@ -12,7 +11,8 @@ class EcoActionApp(ft.Control):
         self.earn_points_label = ft.Text(f'Earned Points: {self.points}')
         self.join_challenge_button = ft.ElevatedButton(text="Join Challenge", on_click=self.join_challenge)
         self.view_leaderboard_button = ft.ElevatedButton(text="View Leaderboard", on_click=self.view_leaderboard)
-        
+
+        # Return a Column with the controls
         return ft.Column(
             controls=[
                 self.log_action_button,
@@ -41,11 +41,17 @@ class EcoActionApp(ft.Control):
         ft.SnackBar("Displaying leaderboard...", duration=2000).show()
 
 def main(page):
+    # Set the page title
     page.title = "Eco-Action Tracker"
+    
+    # Create an instance of the EcoActionApp and add it to the page
     app = EcoActionApp()
     page.add(app)
 
+# Run the app
 ft.app(target=main)
+
+
 
 
 
