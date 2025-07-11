@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.Control):  # Ensure you're using UserControl
+class EcoActionApp(ft.UserControl):  # Use UserControl for custom controls
     def __init__(self):
         super().__init__()
         self.points = 0
@@ -32,21 +32,23 @@ class EcoActionApp(ft.Control):  # Ensure you're using UserControl
         self.update()
 
     def join_challenge(self, e):
-        ft.SnackBar("You joined a challenge!", duration=2000).show()
+        self.page.snack_bar = ft.SnackBar(content=ft.Text("You joined a challenge!"), duration=2000)
+        self.page.snack_bar.open = True
+        self.page.update()
 
     def view_leaderboard(self, e):
-        ft.SnackBar("Displaying leaderboard...", duration=2000).show()
-
-    def _get_control_name(self):
-        return "EcoActionApp"
+        self.page.snack_bar = ft.SnackBar(content=ft.Text("Displaying leaderboard..."), duration=2000)
+        self.page.snack_bar.open = True
+        self.page.update()
 
 def main(page):
     page.title = "Eco-Action Tracker"
+    page.horizontal_alignment = "center"
+    page.vertical_alignment = "center"
     app = EcoActionApp()
     page.add(app)
 
-# Run the app in web mode
+# Run the app
 ft.app(target=main)
-
 
 
