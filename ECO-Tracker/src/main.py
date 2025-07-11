@@ -34,10 +34,22 @@ class EcoActionApp(ft.UserControl):  # Use UserControl instead of Control
 
     def join_challenge(self, e):
         # Placeholder for joining a community challenge
-        ft.SnackBar("You joined a challenge!", duration=2000)
+        ft.SnackBar("You joined a challenge!", duration=2000).show()
 
+    def view_leaderboard(self, e):
+        # Placeholder to view the leaderboard
+        ft.SnackBar("Displaying leaderboard...", duration=2000).show()
 
+    def _get_control_name(self):
+        return "EcoActionApp"  # A unique name for the control
 
+def main(page):
+    page.title = "Eco-Action Tracker"
+    app = EcoActionApp()
+    page.add(app)
+
+# Run the app for the desktop environment
+ft.app(target=main)
 
 
 
