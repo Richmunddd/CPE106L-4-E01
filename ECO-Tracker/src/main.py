@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.Control):
+class EcoActionApp(ft.Control):  # Inheriting from Control
     def __init__(self):
         super().__init__()
         self.points = 0
@@ -44,12 +44,14 @@ class EcoActionApp(ft.Control):
         return "EcoActionApp"  # A unique name for the control
 
 def main(page):
+    # Set the page title
     page.title = "Eco-Action Tracker"
     app = EcoActionApp()
     page.add(app)
 
-# Run the app in the web browser
+# Run the app for the web browser
 ft.app(target=main, view=ft.WEB_BROWSER)
+
 
 
 
