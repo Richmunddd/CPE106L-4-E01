@@ -2,7 +2,7 @@ import flet as ft
 
 # Eco-Action Tracker Application using Flet
 
-class EcoActionApp(ft.UserControl):
+class EcoActionApp(ft.Control):
     def __init__(self):
         self.points = 0
 
