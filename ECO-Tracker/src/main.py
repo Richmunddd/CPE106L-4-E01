@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.Control):  # Use UserControl instead of Control
+class EcoActionApp(ft.Control):  # Use Control instead of UserControl
     def __init__(self):
         super().__init__()
         self.points = 0
