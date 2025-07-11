@@ -1,7 +1,10 @@
 import flet as ft
 
-class MyApp(ft.UserControl):
+# Create the MyApp class using Control instead of UserControl
+class MyApp(ft.Control):
     def build(self):
         return ft.Text("Hello, Flet!")
 
+# Run the app
 ft.app(target=MyApp)
+
