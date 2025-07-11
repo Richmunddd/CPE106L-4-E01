@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.Control):  # Use Control instead of UserControl
+class EcoActionApp(ft.UserControl):  # Inheriting from UserControl
     def __init__(self):
         super().__init__()
         self.points = 0
@@ -48,9 +48,8 @@ def main(page):
     app = EcoActionApp()
     page.add(app)
 
-# Run the app for the desktop environment
-ft.app(target=main)
-
+# Run the app in web mode
+ft.app(target=main, view=ft.WEB_BROWSER)
 
 
 
