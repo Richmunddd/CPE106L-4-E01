@@ -1,6 +1,6 @@
 import flet as ft
 
-class EcoActionApp(ft.Control):  # Inheriting from Control instead of UserControl
+class EcoActionApp(ft.Control):  # Inheriting from Control
     def __init__(self):
         super().__init__()
         self.points = 0
@@ -40,6 +40,10 @@ class EcoActionApp(ft.Control):  # Inheriting from Control instead of UserContro
         # Placeholder to view the leaderboard
         ft.SnackBar("Displaying leaderboard...", duration=2000).show()
 
+    def _get_control_name(self):
+        # Return a unique name for the control
+        return "EcoActionApp"  # You can return any unique string here
+
 def main(page):
     # Set the page title
     page.title = "Eco-Action Tracker"
@@ -50,6 +54,7 @@ def main(page):
 
 # Run the app
 ft.app(target=main)
+
 
 
 
