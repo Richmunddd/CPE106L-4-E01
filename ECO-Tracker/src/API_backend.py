@@ -61,15 +61,14 @@ def leaderboard():
 
 @app.post("/sign_up/")
 def sign_up(user_request: UserRequest):
-    # Hash the password
+    # Hash the password before saving
     hashed_password = bcrypt.hashpw(user_request.password.encode('utf-8'), bcrypt.gensalt())
     user = User(user_request.name, password=hashed_password)
     user.save()
     return {"user_id": user.id, "name": user.name}
 
 @app.post("/login/")
-def login(user_request: UserRequest):
-    # Get the user from the database
+def login(user_request: UserRequest, password: str):
     conn = sqlite3.connect("eco_actions.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, name, password FROM users WHERE name = ?", (user_request.name,))
@@ -78,15 +77,14 @@ def login(user_request: UserRequest):
 
     if user_data:
         user_id, name, stored_hash = user_data
-
         # Compare the password with the stored hash
-        if bcrypt.checkpw(user_request.password.encode('utf-8'), stored_hash.encode('utf-8')):
+        if bcrypt.checkpw(password.encode('utf-8'), stored_hash.encode('utf-8')):  # Ensure both are bytes
             return {"user_id": user_id, "name": name}
         else:
             raise HTTPException(status_code=400, detail="Invalid password")
     else:
         raise HTTPException(status_code=400, detail="User not found")
-
+    
 if __name__ == "__main__":
     # Start the FastAPI app in a separate process
     fastapi_process = Process(target=lambda: uvicorn.run(app, host="127.0.0.1", port=8000))

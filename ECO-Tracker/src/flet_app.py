@@ -3,6 +3,7 @@ import requests
 from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 import multiprocessing  # Use multiprocessing instead of threading
+import json
 
 API_URL = "http://127.0.0.1:8000"
 
@@ -32,6 +33,13 @@ def sign_up_ui(page: ft.Page):
     def sign_up(e):
         name = name_field.value
         password = password_field.value
+        
+        if not name or not password:
+            snack_bar.content = ft.Text("Please enter both name and password.", color=ft.Colors.RED_700)
+            snack_bar.open = True
+            page.snack_bar = snack_bar
+            page.update()
+            return
         
         # Make POST request to backend for creating user
         response = requests.post(f"{API_URL}/sign_up/", json={"name": name, "password": password})
@@ -73,7 +81,6 @@ def sign_up_ui(page: ft.Page):
             padding=30,  # Padding added to create space around the input fields
         ),
     )
-
 
 # Function to handle the Login UI
 def login_ui(page: ft.Page):
@@ -166,4 +173,5 @@ if __name__ == "__main__":
     flet_process = multiprocessing.Process(target=start_flet_app)
     flet_process.start()
     flet_process.join()
+
 
